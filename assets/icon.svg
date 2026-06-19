@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- 渐变背景：深紫到亮紫 -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B3BAF"/>
+      <stop offset="1" stop-color="#6B6BE6"/>
+    </linearGradient>
+
+    <!-- 圆角矩形遮罩（iOS 风格）-->
+    <clipPath id="round">
+      <rect x="0" y="0" width="1024" height="1024" rx="220" ry="220"/>
+    </clipPath>
+
+    <!-- 衣架渐变：白到淡紫 -->
+    <linearGradient id="hanger" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D8D8F2"/>
+    </linearGradient>
+
+    <!-- 反光高光 -->
+    <radialGradient id="shine" cx="0.3" cy="0.2" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 圆角背景 -->
+  <g clip-path="url(#round)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <rect width="1024" height="1024" fill="url(#shine)"/>
+
+    <!-- 衣架挂钩 -->
+    <path d="M 512 200
+             C 512 200, 510 175, 528 165
+             C 546 155, 565 168, 565 188
+             C 565 208, 548 220, 540 218"
+          fill="none" stroke="url(#hanger)" stroke-width="36" stroke-linecap="round"/>
+
+    <!-- 衣架主体：横向 -->
+    <!-- 左肩 -->
+    <path d="M 512 240
+             L 280 360
+             L 320 410
+             L 512 290
+             L 704 410
+             L 744 360
+             L 512 240 Z"
+          fill="url(#hanger)"/>
+
+    <!-- 中央连接到底部（梯形身）-->
+    <path d="M 380 380
+             L 644 380
+             L 680 460
+             L 344 460 Z"
+          fill="url(#hanger)" opacity="0.95"/>
+
+    <!-- 衣架底部横杆（挂衣位置）-->
+    <rect x="280" y="450" width="464" height="20" rx="10" fill="url(#hanger)"/>
+
+    <!-- 一个小圆点：镜子眼 / 评分星 -->
+    <circle cx="512" cy="650" r="42" fill="url(#hanger)"/>
+    <circle cx="512" cy="650" r="20" fill="#3B3BAF"/>
+
+    <!-- 几个装饰小点：暗示"评分/星" -->
+    <circle cx="350" cy="700" r="12" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="674" cy="700" r="12" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="432" cy="780" r="9" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="592" cy="780" r="9" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+</svg>

@@ -82,7 +82,7 @@ export async function rateOutfit({
   const isQuick = mode === 'quick';
   const body = {
     model: config.model,
-    max_tokens: isQuick ? 1024 : 2048,
+    max_tokens: isQuick ? 2048 : 4096,
     system: isQuick ? SYSTEM_PROMPT_QUICK : SYSTEM_PROMPT_FULL,
     messages: [
       {
