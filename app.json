@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "OutfitIQ",
+    "slug": "outfit-iq",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "OutfitIQ 需要使用相机来拍摄你的穿搭照片以进行 AI 评分",
+        "NSPhotoLibraryUsageDescription": "OutfitIQ 需要访问相册以选择你的穿搭照片"
+      }
+    },
+    "android": {
+      "package": "com.outfitiq.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "OutfitIQ 需要访问相册以选择你的穿搭照片",
+          "cameraPermission": "OutfitIQ 需要使用相机来拍摄你的穿搭照片以进行 AI 评分"
+        }
+      ]
+    ]
+  }
+}
