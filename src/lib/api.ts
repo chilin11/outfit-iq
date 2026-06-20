@@ -43,7 +43,20 @@ function extractJson(text: string): RatingResult {
     }
   }
   if (lastValidEnd === -1) {
-    throw new Error(`JSON 未闭合\n原文前 500 字：${t.slice(0, 500)}`);
+    // 尝试修复被截断的 JSON (简单补齐括号)
+    let healed = t.slice(start);
+    if (inString) healed += '"';
+    let tempDepth = depth;
+    while (tempDepth > 0) {
+      healed += '}';
+      tempDepth--;
+    }
+    try {
+      const parsed = JSON.parse(healed);
+      return { ...parsed, raw: text, _healed: true } as RatingResult;
+    } catch (e) {
+      throw new Error(`JSON 未闭合且无法自动修复\n原文前 500 字：${t.slice(0, 500)}`);
+    }
   }
   const candidate = t.slice(start, lastValidEnd + 1);
 
@@ -82,7 +95,7 @@ export async function rateOutfit({
   const isQuick = mode === 'quick';
   const body = {
     model: config.model,
-    max_tokens: isQuick ? 2048 : 4096,
+    max_tokens: 8192,
     system: isQuick ? SYSTEM_PROMPT_QUICK : SYSTEM_PROMPT_FULL,
     messages: [
       {
