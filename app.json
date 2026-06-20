@@ -16,13 +16,15 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "OutfitIQ 需要使用相机来拍摄你的穿搭照片以进行 AI 评分",
-        "NSPhotoLibraryUsageDescription": "OutfitIQ 需要访问相册以选择你的穿搭照片"
+        "NSPhotoLibraryUsageDescription": "OutfitIQ 需要访问相册以选择你的穿搭照片",
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
       }
     },
     "android": {
       "package": "com.outfitiq.app",
-      "versionCode": 2,
-      "usesCleartextTraffic": true,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -40,6 +42,14 @@
         {
           "photosPermission": "OutfitIQ 需要访问相册以选择你的穿搭照片",
           "cameraPermission": "OutfitIQ 需要使用相机来拍摄你的穿搭照片以进行 AI 评分"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
         }
       ]
     ],
